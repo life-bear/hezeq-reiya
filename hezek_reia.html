@@ -1,0 +1,125 @@
+
+<html dir="rtl">
+  <head>
+    <script>
+      function c(list)
+     {
+
+       return list[Math.floor(Math.random() * list.length)].toString() + " ";
+     }
+     
+     function c(list, space)
+     {
+
+       var str1 = list[Math.floor(Math.random() * list.length)].toString();
+       if (!space)
+       	str1 += " ";
+       return str1
+     }
+
+     function generate()
+     {
+      // פסקה
+      const letters = 'אבגדהוזחט';
+      const letters2 = '          יכלמנסעפצ';
+      document.getElementById('pisqa_num').innerHTML = letters2[Math.floor(Math.random()*letters2.length)] + letters[Math.floor(Math.random()*letters.length)];    
+      if((Math.floor(Math.random()*4+1) ==2 ))
+        document.getElementById('pisqa_num').innerHTML += 1;
+      //טקסט
+
+        const text1 = document.getElementById("text1");
+        //ש"ע
+        const Fnoun = ["גלות","מחשבה","אידיאה","חיצוניות","פנימיות"];
+        const Fnoun_def = ["האומה","נשמת ישראל","צפית-הישועה","יפעת קדש-הקדשים","הגלות","ארץ-ישראל","האורה","שפעת הקדש","העצמיות", "אדמת הקודש", "מלכות ד\'"];
+        const Mnoun = ["קודש","נפש","עולם","ערך","אור", "מושג", "מעיין", "אידאל"];
+		const Mnoun_def = [ "כנסת-ישראל", "כסא ד\'", "הארץ","האידאל", "מקור החיים", "רוח ד\'","רוח-ישראל", "אור ד\' בעולם", "חיי האמת", "אורם של ישראל בככלות", "זרע ברך ד\'"];
+        //צירופי סמיכות
+        const Fcom= ["שפעת","יפעת","קדושת","בחינת","רוח","אווירת","נשמת", "אורת", "תשוקת"];
+        const Mcom= ["ציור","רוח","ענף","רעיון","אמצעי","שפע", "שורש","יסוד", "מקור", "צביון"];
+        //פעלים
+        const Fverb = ["מאירה","יוקדת","זורחת","מתהווה","נעשית","נקלטת","שופעת","מופיעה","קשורה", "מתתקנת", "מתגבשת", "מתגלמת", "מתלהטת"];
+        const Mverb = ["מאמץ","יוצר","מעמיד","מנכר","מזריח","שופע","מופיע","מבטא","חוצב"];
+
+        const Mpaul = ["כלול","מצוי","גנוז"];
+
+        //תארים
+        const Fadj= ["מרוממת","נעלה","יקרה","עליונה","פנימית","כללית","בהירה","עמוקה","איתנה","מעולה","מצוחצחת","מעורפלת","מטושטשת","תפלה","הגונה","נעימה","מופלאה","נשגבה", "ישראלית"];
+        const Madj = ["גדול","נורא","נשגב","נעלה","איתן","קדוש","עזוז","אידאלי","מרנין","שופע", "כללי"]
+        
+        const Fcomb = ["ואיננה","הנה היא","היא"];
+        const Frel = ["למרות","עקב","בחינת"];
+        const Mcomb = ["והוא איננו","הוא הוא","הוא"];
+
+        const pron = ["ב", "ל", "מ","מתוך ", "בגלל "];
+
+        var str = "";
+        for (var i = 0; i < Math.floor(Math.random()*10+5); i++) // חצאים ראשונים של משפטים
+        {
+          var ran = Math.floor(Math.random()*4+1);
+
+          if (ran == 1) //האורה הבהירה מופיעה בנשמת החיצוניות היותר מעולה 
+          {
+            str += c(Fnoun_def) + "ה" + c(Fadj) + c(Fverb) + "ב" + c(Fcom) + "ה" + c(Fnoun) + "היותר " + c(Fadj);
+          }
+          if (ran == 2)
+          {
+            str += c(Mcom) + "זה" + " " + c(Mverb) +"את" + " " + c(Mcom) + c(Mnoun) + c(Fnoun_def) + "ה" + c(Fadj);
+          }
+          if (ran == 3) 
+          {
+            str += c(Fverb) + "היא " + c(Fcom) + c(Fnoun_def) + "על דבר " + c(Mcom) + c(Mnoun) + c(Mnoun_def);
+          }
+          if (ran == 4)
+          {
+          	str += c(Fcom) + c(Fnoun_def) + "של ה" + c(Mnoun) + "היותר " + c(Madj);
+          }
+          str = str.substring(0, str.length-1);// מוריד רווח מיותר
+          str+=", "
+          ran = Math.floor(Math.random()*4+1); // החצי השני
+          if (ran == 1)
+          {
+          	str += "ש" + c(Fverb) + c(pron, true) + c(Mcom) + c(Mnoun) + c(Fnoun_def);
+          }
+          if (ran == 2)
+          {
+          	str += c(Fcomb) + c(Fcom) + c(Fnoun_def) + "ה" + c(Fverb) + c(pron, true) + c(Mcom) + c(Mnoun) + "ה" + c(Fnoun);
+          }
+          if (ran == 3)
+          {
+          	str += "אפילו כאשר " + c(Mcomb) + c(Mcom) + c(Mnoun_def, true) + ", " + "הנה " + c(Mpaul) + "הוא " + c(pron, true) + c(Fcom) + c(Fnoun_def);
+          }
+          if (ran == 4)
+          {
+          	str += c(Frel) + c(Fcom) + c(Fnoun_def) + "ה" + c(Fverb) + c(pron, true) + c(Mnoun_def) + "היותר " + c(Madj);
+          }
+          str = str.substring(0, str.length-1);// מוריד רווח מיותר
+          str+=". ";
+        }
+       	text1.innerHTML = str;
+     }
+    </script>
+  </head>
+  <body>
+    ב"ה ובהשתדלותינו
+    <style>  
+      *
+      {
+        font-family: 'Guttman Frank', serif;
+      }
+      #pisqa_num
+      {
+        font-weight: bold;
+        text-align: center;
+      }
+      div
+      {
+        width: 559px;
+      }
+    </style>
+    <button id="gen" onclick="generate()">צור פיסקה</button>
+    <div>
+      <p id="pisqa_num">.</p>
+      <p id="text1">.</p>
+    </div>
+  </body>
+</html>
